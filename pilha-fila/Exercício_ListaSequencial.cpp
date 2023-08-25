@@ -102,6 +102,16 @@ void exclui_final( NODO *lista ) {	// o f perde 1, não exclui o elemento, mas nã
 	}
 }
 
+void troca_pilha( NODO lista, NODO *pilha ) { // pega o ultimo elemento da primeira estrutura de dados e coloca no final da segunda
+	int i;
+	
+	for(i=lista.f-1; i >= 0; i--) {
+		pilha->info[pilha->f] = lista.info[i];  // vai adicionando sempre no ultimo elemento da pilha e navegando nos ultimos elementos da lista a cada interação. 
+		pilha->f++;
+	}
+	
+}
+
 
 
 
@@ -126,6 +136,14 @@ int main( void ){
 	}	
 	
 	imprime_lista(fila1);
+	
+	troca_pilha(fila1, &pilha1);
+	
+	imprime_lista(pilha1);
+	
+	troca_pilha(pilha1, &pilha2);
+	
+	imprime_lista(pilha2);
                     
 } // fim do programa principal
 
