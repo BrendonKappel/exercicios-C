@@ -13,11 +13,7 @@
 /***********************************************/
 /* Funções                     					*/
 /***********************************************/
-void cria_lista( int *fim ){
-     
-    *fim = 0;                                   // iniciliza lista, tamanho da lista = 0
-    printf( "\n Lista criada! " );
-}
+
 
 
 
@@ -114,64 +110,23 @@ void exclui_final( NODO *lista ) {	// o f perde 1, não exclui o elemento, mas nã
 /* Programa Principal                          */
 /***********************************************/
 int main( void ){
-    int op;                                   // opção do menu
-    NODO lista;                               // variável do tipo lista sequencial = vetor de registros
+	int num, i;     // quantidades de letra da palavra
+    NODO fila1, pilha1, pilha2;                               // filas e pilhas utilizadas
+   
     setlocale( LC_ALL, "Portuguese" );        // alterar idioma para português
-
-    while( 1 ){
-         printf( "\n /--------------------------------------------------------/" );
-         printf( "\n Programa registro - Menu                                  " );
-         printf( "\n [1 ] Cria lista                                           " );
-         printf( "\n [2 ] Inclui registro no final da lista                    " );
-         printf( "\n [3 ] Inclui registro no início da lista                   " );
-		 printf( "\n [4 ] Imprime lista                                        " );
-		 printf( "\n [5 ] exclui inicio										   " );
-		 printf( "\n [6 ] exclui fim									   	   " );
-         printf( "\n [0 ] Para sair do programa                                " );		
-         printf( "\n /--------------------------------------------------------/" );
-         printf( "\n Opção: " );
-         fflush( stdin );    // limpa buffer do teclado, funciona antes da entrada de dados
-         scanf( "%i", &op ); // tecla de opção do menu
-         
-         switch( op ) {
-            case 1:  // rotina cria lista, inicializa a lista em zero
-                    cria_lista( &lista.f );
-                    break;
-
-            case 2:  // rotina inclui registro no final da lista, conforme indicado pelo gerenciados da lista (posição lista.f)
-                    inclui_fim( &lista );
-                    break;
-
-            case 3:  // rotina inclui registro no início da lista, posição 0
-                    inclui_inicio( &lista );
-                    break;
-                                                               
-            case 4: // rotina imprime todos os registros da lista
-                    imprime_lista( lista );
-                    break;
-                   
-            case 5: // exclui elemento inicial
-            exclui_inicio( &lista );
-            break;
-           
-            case 6: // exclui elemento no final da lista
-            exclui_final( &lista );
-            break;
-                   
-            case 0: // término do programa
-                    exit( 1 );
-                    break;
-
-            default :
-                    printf( "\n Digite uma opção!" );
-                    break;
-        } // fim switch( op )
-       
-        printf("\n");
-        getchar();       // parada da tela
-        system( "cls" ); // limpar tela
-     } // fim do while( 1 )
- return 0;
+	
+	fila1.f = 0, pilha1.f = 0, pilha2.f = 0;  // substitui a função "cria_lista" --> inicializa com o tamanho 0
+	
+	printf("quantas letras tem a palavra que deseja digitar? ");
+	scanf("%i", &num);
+	
+	for(i=0; num > i; i++) {	// incluindo no fim  -->  FILA
+	
+		inclui_fim(&fila1);
+	}	
+	
+	imprime_lista(fila1);
+                    
 } // fim do programa principal
 
 
