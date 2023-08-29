@@ -1,6 +1,4 @@
-#include <stdio.h>         
-#include <stdlib.h>   
-#include <string.h>     
+#include <stdio.h>            
 #include <locale.h>        
 
 
@@ -13,48 +11,20 @@
 /***********************************************/
 /* Funções                     					*/
 /***********************************************/
-
-
-
-
 void inclui_fim( NODO *lista ){
 	INFORMACAO aux;
 
-	if(lista->f > N_MAX) {
+	if(lista->f > N_MAX) { // se tamanho da lista for maior do que a constante que delimita o tamanho maximo da lista ele da erro. 
 		printf("lista está cheia");
-	} else {
-		entrada_dados(&aux);
-		lista->info[lista->f] = aux;
-		lista->f++;
+	} else { // senao 
+		entrada_dados(&aux); // chama a funcao entrada de dados, para o ususario poder informar o dado que ele quer
+		lista->info[lista->f] = aux; // ira adicionar o valor da entrada de dados na ultima posicao da lista
+		lista->f++; // tamanho da lista cresce em + 1
 	}
 
 }
 
 
-
-void inclui_inicio(NODO *lista) {
-    if (lista->f > N_MAX) {  // Verifica se a lista não está cheia
-    printf("A lista está cheia. Não é possível adicionar mais registros.\n");
-   
-    } else {
-        int i;
-        INFORMACAO aux;
-       
-        // entrada de dados
-        entrada_dados(&aux);
-       
-        // move da esquerda p/ direita 1 casa.
-        for (i = lista->f; i > 0; i--) {
-            lista->info[i] = lista->info[i - 1]; // o f vale a próxima casa a ser preenchida (sempre estamos uma casa a frente com o f)
-        }
-       
-        // Inserindo o novo valar no inicio da lista
-        lista->info[0] = aux;
-       
-        lista->f++;  // aumenta o tamanho de espaços ocupados na lista em um valor
-        printf("Registro adicionado no início da lista com sucesso!\n");
-    }
-}
 
 void imprime_lista( NODO lista ){
      
@@ -73,41 +43,13 @@ void imprime_lista( NODO lista ){
 }
 
 
-void exclui_inicio( NODO *lista ) {  //função para fila
-	int i;
-	
-	if(lista->f < 0) {
-		printf("\nlista está vazia!");
-	} else {
-		
-		for(i=0; i < lista->f ; i++) {
-		lista->info[i] = lista->info[i + 1];
-		}
-		
-		lista->f = lista->f-1;
-		printf("Primeiro elemento da listra foi excluido.");
-		getchar();
-	}
-	
-
-}
-
-void exclui_final( NODO *lista ) {	// o f perde 1, não exclui o elemento, mas não mostra mais ele
-	if(lista->f < 0) {
-		printf("\nlista está vazia!");
-	} else {
-		lista->f = lista->f-1;
-		printf("Ultimo elemento da listra foi excluido.");
-		getchar();
-	}
-}
 
 void troca_pilha( NODO lista, NODO *pilha ) { // pega o ultimo elemento da primeira estrutura de dados e coloca no final da segunda
 	int i;
 	
 	for(i=lista.f-1; i >= 0; i--) {
 		pilha->info[pilha->f] = lista.info[i];  // vai adicionando sempre no ultimo elemento da pilha e navegando nos ultimos elementos da lista a cada interação. 
-		pilha->f++;
+		pilha->f++; // adiciona + 1 elemento no tamanho da lista (f)
 	}
 	
 }
@@ -135,9 +77,9 @@ int main( void ){
 		inclui_fim(&fila1);
 	}	
 	
-	imprime_lista(fila1);
+	imprime_lista(fila1); // imprime a lista
 	
-	troca_pilha(fila1, &pilha1);
+	troca_pilha(fila1, &pilha1);  // realiza a operação 
 	
 	imprime_lista(pilha1);
 	

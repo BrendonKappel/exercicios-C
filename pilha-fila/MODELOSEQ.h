@@ -2,10 +2,10 @@
 /* Definição do Registro e da Estrutura        */
 /* Profa Daniela Bagatini                      */
 /***********************************************/ 
-#define N_MAX   100
+#define N_MAX   100 // definicao de uma constante
 
 typedef struct{                 
-       char nome[2];
+       char nome[2]; // string com 2 caracteres
 }INFORMACAO;
        
 typedef struct{
