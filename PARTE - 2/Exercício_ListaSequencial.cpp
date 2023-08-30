@@ -56,8 +56,6 @@ void troca_pilha( NODO lista, NODO *pilha ) { // pega o ultimo elemento da prime
 
 
 
-
-
 /***********************************************/
 /* Programa Principal                          */
 /***********************************************/
